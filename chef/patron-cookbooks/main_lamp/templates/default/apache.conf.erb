@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerAdmin  webmaster@localhost
+    DocumentRoot <%= @params[:docroot] %>
+    ServerName <%= @params[:server_name] %>
+</VirtualHost>
+
+<Directory <%= @params[:docroot] %>>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>

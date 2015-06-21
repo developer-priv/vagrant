@@ -1,0 +1,7 @@
+name             "main_ror"
+maintainer       "Tomasz Musialek"
+maintainer_email "mail@mail.com"
+license          "MIT"
+description      "Configures machine for Rails"
+long_description "Configures machine for Rails"
+version          "0.0.1"

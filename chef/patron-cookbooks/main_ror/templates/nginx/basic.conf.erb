@@ -1,0 +1,17 @@
+server {
+    location / {
+        root   /vagrant/shared/web/basic;
+        index  index.html index.htm;
+    }
+
+    listen 80;
+    server_name <%= @node[:web_server][:domain] %>;
+
+    root /vagrant/shared/web/basic;
+
+    try_files $uri/index.html $uri @app;
+
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 4G;
+    keepalive_timeout 10;
+}

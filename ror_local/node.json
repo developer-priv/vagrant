@@ -1,0 +1,31 @@
+{
+  "vm_name": "rorlocal",
+  "provider": "virtualbox",
+  "network": {
+    "ip": "192.168.33.80",
+    "forward_80_port": 8080,
+    "forward_22_port": 2280
+  },
+  
+  "ssh_username": "vagrant",
+  "chef_json": {
+    "username": "vagrant",
+    "web_server": {
+      "type": "unicorn",
+      "domain": "localhost"
+    },
+    "ruby": {
+      "version": "2.2.1"
+    },
+    "rbenv": {
+      "user_installs": [{
+        "user": "vagrant"
+      }]
+    },
+    "mysql": {
+      "version": "5.5",
+      "port": "3306",
+      "server_root_password": ""
+    }
+  }
+}

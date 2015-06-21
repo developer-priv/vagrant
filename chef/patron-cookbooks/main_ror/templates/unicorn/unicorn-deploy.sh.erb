@@ -1,0 +1,16 @@
+echo $1 > /home/ubuntu/username
+echo $PATH > /home/ubuntu/path_env
+
+kill -9 $(cat /home/$1/web/unicorn/pids/unicorn.pid)
+rm -rf /home/$1/web/unicorn
+cp -r /vagrant/shared/web/unicorn /home/$1/web/unicorn
+cd /home/$1/web/unicorn
+bundle install
+gem install unicorn
+echo $PATH > /home/ubuntu/path_env_after_unicorn
+#The following does not work if profile.d/rbenv did not run yet
+rbenv rehash
+unicorn_rails -c /home/$1/web/unicorn.rb -D
+ps axf > /home/ubuntu/processes
+ls -la /tmp > /home/ubuntu/tmp_files
+cd /home/$1

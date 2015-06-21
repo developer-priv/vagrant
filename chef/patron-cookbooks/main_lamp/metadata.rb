@@ -1,0 +1,7 @@
+name             "main_lamp"
+maintainer       "Tomasz Musialek"
+maintainer_email "mail@mail.com"
+license          "MIT"
+description      "Configures machine for LAMP stack"
+long_description "Configures machine for LAMP stack"
+version          "0.0.1"

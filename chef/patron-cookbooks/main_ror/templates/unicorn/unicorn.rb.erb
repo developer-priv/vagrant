@@ -1,0 +1,18 @@
+#Set the working application directory
+working_directory "<%= "/home/#{@node['username']}/web/unicorn" %>"
+
+# Unicorn PID file location
+pid "<%= "/home/#{@node['username']}/web/unicorn/pids/unicorn.pid" %>"
+
+# Path to logs
+stderr_path "<%= "/home/#{@node['username']}/web/unicorn/log/unicorn.log" %>"
+stdout_path "<%= "/home/#{@node['username']}/web/unicorn/log/unicorn.log" %>"
+
+# Unicorn socket
+listen "/tmp/unicorn.myapp.sock"
+
+# Number of processes
+worker_processes 2
+
+# Time-out
+timeout 30

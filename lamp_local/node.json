@@ -1,0 +1,32 @@
+{
+  "vm_name": "lamplocal",
+  "provider": "virtualbox",
+  "network": {
+    "ip": "192.168.33.81",
+    "forward_80_port": 8081,
+    "forward_22_port": 2281
+  },
+  
+  "ssh_username": "vagrant",
+  "chef_json": {
+    "username": "vagrant",
+    "web_server": {
+      "type": "php",
+      "provider": "virtualbox",
+      "domain": "localhost"
+    },
+    "ruby": {
+      "version": "2.2.1"
+    },
+    "rbenv": {
+      "user_installs": [{
+        "user": "vagrant"
+      }]
+    },
+    "mysql": {
+      "version": "5.5",
+      "port": "3306",
+      "server_root_password": ""
+    }
+  }
+}

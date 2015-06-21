@@ -1,0 +1,54 @@
+.main
+  .top-panel
+    =image_tag 'piano.png'
+    .overlay
+      .logo PATRON
+      .central-container
+        .upper
+          %span.light IGNITE
+          %span.red YOUR
+          %span.light RENAISSANCE
+        .lower
+          %span.white Discover, book and connect with Artists + Musicians in your community.
+
+      .menu
+        %div.first
+        =link_to 'ARTISTS', '/', class: 'item'
+        =link_to 'FILMMAKERS', '/', class: 'item'
+        =link_to 'PHOTOGRAPHERS', '/', class: 'item'
+        =link_to 'MUSICIANS', '/', class: 'item'
+        =link_to 'ACTORS', '/', class: 'item'
+        =link_to 'WORDSMITHS', '/', class: 'item'
+        %div.last
+        %span.stretch
+
+  .big-links
+    -big_link 'musicians.png', 'MUSICIANS', ['Start taking private lessons.', 'Find & book local soloists and groups.', 'Transform your event on any budget.', 'Connect with fellow musicians.']
+
+    -big_link 'artists.png', 'ARTISTS', ['Take private art lessons.', 'Have your spouse’s portrait painted.', 'Transform your walls on any budget.  ', 'Live art + dinner party? Yes!']
+
+    -big_link 'photographers.png', 'PHOTOGRAPHERS', ['Get an executive headshot. ', 'Irresistible dating profile photo. ', 'Your wedding day. Enough said. ', 'Capture a family portrait. ']
+
+    -big_link 'filmmakers.png', 'FILMMAKERS', ['Record your daughter\'s recital.', 'Capture milestones like graduation.', 'Next level resume & business pitches. ', 'Punch up your Kickstarter. ']
+
+    -big_link 'wordsmiths.png', 'WORDSMITHS', ['“Write” a love poem.', 'Recite that epic toast.', 'Increase sales with custom copy. ', 'Give your vows a bit of wow.']
+
+    -big_link 'performance_artists.png', 'PERFORMANCE ARTISTS', ['Delight in dance lessons.', 'Say yes to a flash mob proposal.', 'Attract viral attention to your brand.', 'Take acting lessons with pros.']
+
+  .bottom-panel
+    =image_tag 'bottom_piano.jpg'
+    .overlay
+      .info
+        .left
+          %span Press
+          %span Blog
+          %span Help
+        .right
+          %span Trust & Safety
+          %span Enterprise Platform
+        .stretch
+      .connect
+        .center
+          %span Connect With Us
+      .terms
+        %span Terms & Privacy

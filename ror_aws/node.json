@@ -1,0 +1,36 @@
+{
+  "vm_name": "roraws",
+  "provider": "aws",
+  "ssh_username": "ubuntu",
+  "aws" : {
+    "access_key_id": "xxxxxxxxxxxxxxx",
+    "secret_access_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "keypair_name": "patronkeys",
+    "ami": "ami-d05e75b8",
+    "region": "us-east-1",
+    "instance_type": "t2.micro",
+    "security_groups": ["patron"],
+    "elastic_ip": "xxx.xxx.xxx.xxx",
+    "private_key_path": "xxxxxxxxxxxx.pem"
+  },
+  "chef_json": {
+    "username": "ubuntu",
+    "web_server": {
+      "type": "unicorn",
+      "domain": "patron.gallery"
+    },
+    "ruby": {
+      "version": "2.2.1"
+    },
+    "rbenv": {
+      "user_installs": [{
+        "user": "ubuntu"
+      }]
+    },
+    "mysql": {
+      "version": "5.5",
+      "port": "3306",
+      "server_root_password": ""
+    }
+  }
+}

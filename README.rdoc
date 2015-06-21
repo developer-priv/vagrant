@@ -1,0 +1,78 @@
+1. Install Ruby
+2. Install Vagrant
+3. Install Vagrant AWS plugin
+3. Install RSync for Windows
+4. Install Git
+5. Install librarian-chef gem
+5. Make sure PATH environment variable is set up properly (Ruby, Vagrant, cwRsync, Git should all be in your PATH)
+6. Check out repository to folder: vms
+7. Update custom data:
+ - Fill in parameters in ror_aws/node.json and lamp_aws/node.json (AWS secret keys, etc.)
+ - Copy patronkeys.pem to ror_aws/patronkeys.pem and lamp_aws/patronkeys.pem
+8. In command line, change directory one of: lamp_aws, lamp_local, ror_aws, ror_local
+9. Run: initialize.bat
+
+
+Every machine is configured using node.json files. All configuration data is inside of those files. Vagrantfiles are IDENTICAL (to improve maintainability), they just read configuration from node.json files (read below).
+
+For *_local machines the following ports are redirected (Vagrant has some inconsistent defaults, so better use the settings below):
+
+lamp_local:
+ - guest 80 (http) -> host 8081
+ - guest 22 (ssh)  -> host 2281
+
+ror_local:
+ - guest 80 (http) -> host 8080
+ - guest 22 (ssh)  -> host 2280
+
+So you can just point your browser on host machine to: localhost:8080, or localhost:8081.
+
+For *_aws machines you need to set up aws/elastic_ip properly. Then point your browser to that address.
+
+If things are working properly you should see a simple web application in your browser.
+
+
+To login using PuTTY:
+
+1. lamp_local:
+ - ssh user: vagrant
+ - ssh password: vagrant
+
+2. lamp_aws:
+ - ssh user: ubuntu
+ - ssh password: ubuntu
+ - place proper *.pem (private key) file in lamp_aws directory
+
+3. ror_local:
+ - ssh user: vagrant
+ - ssh password: vagrant
+
+4. ror_aws:
+ - ssh user: ubuntu
+ - ssh password: ubuntu
+ - place proper *.pem (private key) file in ror_aws directory
+
+
+We keep directories (lamp_aws, lamp_local, ror_aws, ror_local) seperate, because otherwise "vagrant provision" would try to provision all machines at once, which is not what we want (we want to be able to use machines in seperation).
+
+The Vagrantfiles in all directories are IDENTICAL (node.json are different though). I'd gladly merge them together, but because of Vagrant's shortcoming it's impossible (Vagrant looks for Vagrantfile in the directory where we execute "vagrant up").
+
+
+
+FAQ
+
+Q: librarian-chef is not working and complaining about certificate problems
+A: That's known problem with AWS S3 certificates. Changes were introduced to S3 Amazon servers (where some of the cookbooks are hosted) certificate chain, which results in broken validation for SSL. For now you can workaround that by hacking ruby net/http.rb file.
+
+
+== TODO
+
+1. Edit net/http.rb - self.verify_mode = VERIFY_NONE
+2. Symlinks on Windows, as elevated:
+  2.1. fsutil behavior set SymlinkEvaluation L2L:1 R2R:1 L2R:1 R2L:1
+  2.2. Restart VboxSVC.exe as admin
+
+
+
+
+

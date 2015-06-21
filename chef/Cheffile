@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://supermarket.chef.io/api/v1'
+
+# Common
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'mysql'
+cookbook 'vim'
+
+# For RoR stack
+cookbook 'ruby_build'
+cookbook 'nodejs'
+cookbook 'rbenv', git: 'https://github.com/aminin/chef-rbenv'
+cookbook 'nginx'
+
+# For LAMP stack
+cookbook 'openssl'
+cookbook 'apache2'
+cookbook 'php'

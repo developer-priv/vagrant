@@ -1,0 +1,8 @@
+chef/cookbooks
+chef/Cheffile.lock
+chef/tmp
+
+lamp_aws/.vagrant
+lamp_local/.vagrant
+ror_aws/.vagrant
+ror_local/.vagrant
