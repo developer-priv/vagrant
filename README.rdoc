@@ -9,8 +9,10 @@
 7. Update custom data:
  - Fill in parameters in ror_aws/node.json and lamp_aws/node.json (AWS secret keys, etc.)
  - Copy patronkeys.pem to ror_aws/patronkeys.pem and lamp_aws/patronkeys.pem
-8. In command line, change directory one of: lamp_aws, lamp_local, ror_aws, ror_local
-9. Run: initialize.bat
+8. In command line, change directory to: chef
+9. Run librarian: librarian-chef install
+10. In command line, change directory to one of: lamp_aws, lamp_local, ror_aws, ror_local
+11. Run: initialize.bat
 
 
 Every machine is configured using node.json files. All configuration data is inside of those files. Vagrantfiles are IDENTICAL (to improve maintainability), they just read configuration from node.json files (read below).
@@ -62,10 +64,10 @@ The Vagrantfiles in all directories are IDENTICAL (node.json are different thoug
 FAQ
 
 Q: librarian-chef is not working and complaining about certificate problems
-A: That's known problem with AWS S3 certificates. Changes were introduced to S3 Amazon servers (where some of the cookbooks are hosted) certificate chain, which results in broken validation for SSL. For now you can workaround that by hacking ruby net/http.rb file.
+A: That's known problem with AWS S3 certificates. Changes were introduced to S3 Amazon servers (where some of the cookbooks are hosted) certificate chain, which results in broken validation for SSL. For now you can workaround that by hacking ruby net/http.rb file. Will describe later.
 
 
-== TODO
+== TODO - this section might be extended
 
 1. Edit net/http.rb - self.verify_mode = VERIFY_NONE
 2. Symlinks on Windows, as elevated:
